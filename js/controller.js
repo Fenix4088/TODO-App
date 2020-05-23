@@ -15,14 +15,19 @@ const controller = ((ctrlModel, ctrlView) => {
     e.preventDefault();
 
     // Получаем текст из импута
-    const newItemText = document.querySelector(DOMElements.mainInput).value;
+    let newItemText = document.querySelector(DOMElements.mainInput).value;
 
     if (newItemText.trim() === "") {
         alert("Заполните поле");
     } else {
+
         // Данные записываются в модель
-        ctrlModel.saveElement(newItemText);
-        ctrlModel.test();
+        const newElement = ctrlModel.saveElement(newItemText);
+        ctrlModel.test(); //Отображения базы данных в консоле
+        ctrlView.clearInput()
+        // Отображаем данные на экране
+        ctrlView.displayElement(newElement);
+        // Очищаем строку ввода данных
     }
 
   }
