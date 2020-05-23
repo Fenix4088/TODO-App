@@ -22,16 +22,22 @@ const view = (() => {
     unorderedList.insertAdjacentHTML("beforeend", newElement);
   }
 
+  // Ф-я для удаления элемента со странице
+  function hideElement(ID) {
+    document.getElementById(ID).remove();
+  }
+
   // Ф-я очистки поля ввода
-  function clearInput () {
-      const inputForm = document.querySelector(DOMStrings.mainInput);
-      inputForm.value = ""
-      inputForm.focus();
+  function clearInput() {
+    const inputForm = document.querySelector(DOMStrings.mainInput);
+    inputForm.value = "";
+    inputForm.focus();
   }
 
   return {
     displayElement,
     clearInput,
+    hideElement,
     getDomElements: function () {
       return DOMStrings;
     },

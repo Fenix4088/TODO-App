@@ -20,6 +20,20 @@ const model = ( () => {
         data.itemStorage.push(newElement);
         return newElement;
     }
+    
+    function deleteElement (ID) {
+        const index = data.itemStorage.findIndex(item => item.id === ID);
+        console.log("deleteElement -> index", index)
+        if(index !== -1) {
+            data.itemStorage.splice(index, 1);    
+        }
+
+        // data.itemStorage.forEach( (item) => {
+        //     if(ID === item.id) {
+        //         data.itemStorage.splice(ID);
+        //     }
+        // })
+    }
 
 
     const data = {
@@ -28,6 +42,7 @@ const model = ( () => {
 
     return {
         saveElement,
+        deleteElement,
         test: function () {
             console.log(data);
         }
