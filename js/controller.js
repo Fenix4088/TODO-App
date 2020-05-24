@@ -21,7 +21,7 @@ const controller = ((ctrlModel, ctrlView) => {
     } else {
       // Данные записываются в модель
       const newElement = ctrlModel.saveElement(newItemText);
-      ctrlModel.test(); //Отображения базы данных в консоле
+      // ctrlModel.test(); //Отображения базы данных в консоле
       ctrlView.clearInput();
       // Отображаем данные на экране
       ctrlView.displayElement(newElement);
@@ -39,14 +39,51 @@ const controller = ((ctrlModel, ctrlView) => {
       ctrlModel.deleteElement(elementID);
       // Удаляем элемент из Шаблона
       ctrlView.hideElement(elementID);
+
+      // Удаление из LocalStorage
+      // Узнаем текст элемента по которому происходит клик
+      const valueOfElement = e.target.previousElementSibling.innerText
+      // Передаем значение в ф-ю в модели
+      ctrlModel.deleteLocalStorageItem(valueOfElement);
+
     }
   }
+  ctrlModel.test();
 
-  function filterItems() {}
+  //   Ф-я фильтрации
+  function filterItems(e) {
+    // пОЛУЧАЕМ ФРАЗУ ДЛЯ ПОИСКА И ПЕРЕВОДИМ ЕЕ В НИЖНИЙ РЕШИСТР
+    const searchedText = e.target.value.toLowerCase();
+
+    // 1. Получаем список всех задач
+    const items = document.querySelectorAll("li");
+
+    // 2. Перебираем циклом все найденые теги li с задачами
+    items.forEach(function (item) {
+      // Получаем текст задачи из списка и переводим его в нижний регистр
+      const itemText = item.firstChild.textContent.toLowerCase();
+
+      // Проверяем вхождение искомой подстроки в текст задачи
+      if (itemText.indexOf(searchedText) != -1) {
+        // Если вхожжение есть показываем элемент с задачей
+        item.style.display = "block";
+      } else {
+        // Если вхожления нет то скрываем
+        item.style.display = "none";
+      }
+    });
+  }
+
+  console.log();
 
   return {
     init: function () {
       console.log("App Started!");
+      // При инициализации выводим данные из хранилища
+      if (localStorage.length > 0) {
+        const localStorageArr = JSON.parse(localStorage.getItem("ToDo"));
+        localStorageArr.forEach((item) => ctrlView.displayElement(item));
+      }
     },
   };
 })(model, view);
