@@ -18,8 +18,7 @@ const model = (() => {
     const newElement = new newListItem(ID, value);
     data.itemStorage.push(newElement);
     // Сохраняем в Local Storage
-    data.browserStorage.push(newElement);
-    localStorage.setItem("ToDo", JSON.stringify(data.browserStorage));
+    localStorage.setItem("ToDo", JSON.stringify(data.itemStorage));
     return newElement;
   }
 
@@ -28,29 +27,19 @@ const model = (() => {
     const index = data.itemStorage.findIndex((item) => item.id === ID);
     if (index !== -1) {
       data.itemStorage.splice(index, 1);
-
     }
-  }
 
-  // Удаление из LocalStorage
-  function deleteLocalStorageItem (value) {
-
-    const getedArray = JSON.parse(localStorage.getItem("ToDo"));
-    const elementIndex = getedArray.findIndex(item => item.value == value)
-
-    const newArr = getedArray.splice(elementIndex, 1)
-    console.log("deleteLocalStorageItem -> newArr", newArr)
-    localStorage.setItem("ToDo", JSON.stringify(newArr))
-
+    // Добавоение обновленного массива в LocalStorage
+    const getedArr = JSON.parse(localStorage.getItem("ToDo"));
+    getedArr.splice(index, 1);
+    localStorage.setItem("ToDo", JSON.stringify(getedArr));
   }
 
   const data = {
     itemStorage: [],
-    browserStorage: [],
   };
 
   return {
-    deleteLocalStorageItem,
     saveElement,
     deleteElement,
     test: function () {

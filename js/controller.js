@@ -22,10 +22,10 @@ const controller = ((ctrlModel, ctrlView) => {
       // Данные записываются в модель
       const newElement = ctrlModel.saveElement(newItemText);
       // ctrlModel.test(); //Отображения базы данных в консоле
+      // Очищаем строку ввода данных
       ctrlView.clearInput();
       // Отображаем данные на экране
       ctrlView.displayElement(newElement);
-      // Очищаем строку ввода данных
     }
   }
 
@@ -39,16 +39,8 @@ const controller = ((ctrlModel, ctrlView) => {
       ctrlModel.deleteElement(elementID);
       // Удаляем элемент из Шаблона
       ctrlView.hideElement(elementID);
-
-      // Удаление из LocalStorage
-      // Узнаем текст элемента по которому происходит клик
-      const valueOfElement = e.target.previousElementSibling.innerText
-      // Передаем значение в ф-ю в модели
-      ctrlModel.deleteLocalStorageItem(valueOfElement);
-
     }
   }
-  ctrlModel.test();
 
   //   Ф-я фильтрации
   function filterItems(e) {

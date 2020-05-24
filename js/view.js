@@ -10,7 +10,7 @@ const view = (() => {
   function displayElement(obj) {
     const unorderedList = document.querySelector(DOMStrings.itemsList);
     const newElement = `<li id=${obj.id} class="list-group-item">
-                                    <span class="list-group-item__text">${obj.value}</span>
+                                    ${obj.value}
                                     <button
                                         data-action="delete"
                                         type="button"
@@ -33,10 +33,6 @@ const view = (() => {
     inputForm.value = "";
     inputForm.focus();
   }
-
-  // function getFromLocalStorage () {
-  //     localStorage.getItem
-  // }
 
   return {
     displayElement,
