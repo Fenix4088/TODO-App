@@ -18,7 +18,13 @@ const model = (() => {
     const newElement = new newListItem(ID, value);
     data.itemStorage.push(newElement);
     // Сохраняем в Local Storage
-    localStorage.setItem("ToDo", JSON.stringify(data.itemStorage));
+    if (localStorage.length > 0) {
+      let getedArr = JSON.parse(localStorage.getItem("ToDo"));
+      getedArr.push(newElement);
+      localStorage.setItem("ToDo", JSON.stringify(getedArr));
+    } else {
+      localStorage.setItem("ToDo", JSON.stringify(data.itemStorage));
+    }
     return newElement;
   }
 
