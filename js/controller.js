@@ -74,7 +74,10 @@ const controller = ((ctrlModel, ctrlView) => {
       // При инициализации выводим данные из хранилища
       if (localStorage.length > 0) {
         const localStorageArr = JSON.parse(localStorage.getItem("ToDo"));
-        localStorageArr.forEach((item) => ctrlView.displayElement(item));
+        localStorageArr.forEach((item) => {
+          ctrlView.displayElement(item)
+          ctrlModel.data.itemStorage.push(item);
+        });
       }
     },
   };

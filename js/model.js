@@ -10,6 +10,7 @@ const model = (() => {
   function saveElement(value) {
     // Расчитываем ID
     let ID = 0;
+
     if (data.itemStorage.length > 0) {
       const lastIndex = data.itemStorage.length - 1;
       ID = data.itemStorage[lastIndex].id + 1;
@@ -25,6 +26,7 @@ const model = (() => {
     } else {
       localStorage.setItem("ToDo", JSON.stringify(data.itemStorage));
     }
+
     return newElement;
   }
 
@@ -46,6 +48,7 @@ const model = (() => {
   };
 
   return {
+    data,
     saveElement,
     deleteElement,
     test: function () {
