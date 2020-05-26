@@ -23,7 +23,7 @@ const view = (() => {
   }
 
   // Ф-я для удаления элемента со странице
-  function hideElement(ID) {
+  function removeElement(ID) {
     document.getElementById(ID).remove();
   }
 
@@ -37,7 +37,7 @@ const view = (() => {
   return {
     displayElement,
     clearInput,
-    hideElement,
+    removeElement,
     getDomElements: function () {
       return DOMStrings;
     },

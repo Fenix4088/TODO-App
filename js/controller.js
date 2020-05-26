@@ -38,7 +38,7 @@ const controller = ((ctrlModel, ctrlView) => {
       //   Удаляем элемент из модели
       ctrlModel.deleteElement(elementID);
       // Удаляем элемент из Шаблона
-      ctrlView.hideElement(elementID);
+      ctrlView.removeElement(elementID);
     }
   }
 
@@ -76,7 +76,7 @@ const controller = ((ctrlModel, ctrlView) => {
         const localStorageArr = JSON.parse(localStorage.getItem("ToDo"));
         localStorageArr.forEach((item) => {
           ctrlView.displayElement(item)
-          ctrlModel.data.itemStorage.push(item);
+          ctrlModel.data.push(item);
         });
       }
     },
