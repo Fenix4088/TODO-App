@@ -1,5 +1,5 @@
 const model = (() => {
-  class newListItem {
+  class NewListItem {
     constructor(id, value) {
       this.value = value;
       this.id = id;
@@ -16,7 +16,7 @@ const model = (() => {
       ID = data[lastIndex].id + 1;
     }
       // Создаем новый элемент и записываем его в массив itemStorage
-      const newElement = new newListItem(ID, value);
+      const newElement = new NewListItem(ID, value);
       data.push(newElement);
       // Сохраняем в Local Storage
       localStorage.setItem("ToDo", JSON.stringify(data));
@@ -35,7 +35,7 @@ const model = (() => {
     localStorage.setItem("ToDo", JSON.stringify(data));
   }
 
-  const data = [];
+  const data = JSON.parse(localStorage.getItem("ToDo")) || [];
 
   return {
     data,
