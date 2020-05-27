@@ -15,19 +15,13 @@ const model = (() => {
       const lastIndex = data.length - 1;
       ID = data[lastIndex].id + 1;
     }
-    // Создаем новый элемент и записываем его в массив itemStorage
-    const newElement = new newListItem(ID, value);
-    data.push(newElement);
-    // Сохраняем в Local Storage
-    if (localStorage.length > 0) {
-      let getedArr = JSON.parse(localStorage.getItem("ToDo"));
-      getedArr.push(newElement);
-      localStorage.setItem("ToDo", JSON.stringify(getedArr));
-    } else {
+      // Создаем новый элемент и записываем его в массив itemStorage
+      const newElement = new newListItem(ID, value);
+      data.push(newElement);
+      // Сохраняем в Local Storage
       localStorage.setItem("ToDo", JSON.stringify(data));
-    }
 
-    return newElement;
+      return newElement;
   }
 
   // Ф-я удаления из модели
@@ -38,9 +32,7 @@ const model = (() => {
     }
 
     // Добавоение обновленного массива в LocalStorage
-    const getedArr = JSON.parse(localStorage.getItem("ToDo"));
-    getedArr.splice(index, 1);
-    localStorage.setItem("ToDo", JSON.stringify(getedArr));
+    localStorage.setItem("ToDo", JSON.stringify(data));
   }
 
   const data = [];

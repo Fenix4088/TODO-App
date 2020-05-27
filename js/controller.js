@@ -2,12 +2,8 @@ const controller = ((ctrlModel, ctrlView) => {
   //Передаекм дом элементы из Шаблона в контроллер
   const DOMElements = ctrlView.getDomElements();
   document.querySelector(DOMElements.form).addEventListener("submit", addItem);
-  document
-    .querySelector(DOMElements.itemsList)
-    .addEventListener("click", removeItem);
-  document
-    .querySelector(DOMElements.filter)
-    .addEventListener("keyup", filterItems);
+  document.querySelector(DOMElements.itemsList).addEventListener("click", removeItem);
+  document.querySelector(DOMElements.filter).addEventListener("keyup", filterItems);
 
   function addItem(e) {
     // Отменяем отправку формы
@@ -66,16 +62,14 @@ const controller = ((ctrlModel, ctrlView) => {
     });
   }
 
-  console.log();
-
   return {
     init: function () {
       console.log("App Started!");
       // При инициализации выводим данные из хранилища
       if (localStorage.length > 0) {
-        const localStorageArr = JSON.parse(localStorage.getItem("ToDo"));
+        const localStorageArr = JSON.parse(localStorage.getItem("ToDo")) || [];
         localStorageArr.forEach((item) => {
-          ctrlView.displayElement(item)
+          ctrlView.displayElement(item);
           ctrlModel.data.push(item);
         });
       }
