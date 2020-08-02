@@ -10,21 +10,21 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <title>Планировщик задач</title>
+    <title>Task Manager</title>
   </head>
   <body>
     <header id="main-header" class="bg-warning text-black p-4 mb-3">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h1 id="header-title">Планировщик</h1>
+            <h1 id="header-title">Task Manager</h1>
           </div>
           <div class="col-md-6 align-self-center">
             <input
               type="text"
               class="form-control"
               id="filter"
-              placeholder="Поиск по списку..."
+              placeholder="Searching ..."
             />
           </div>
         </div>
@@ -37,13 +37,13 @@
           <input
             type="text"
             class="form-control mr-2 flex-grow-1"
-            placeholder="Добавить задачу"
+            placeholder="Add task"
             id="newItemText"
           />
-          <input type="submit" class="btn btn-dark" value="Добавить" />
+          <input type="submit" class="btn btn-dark" value="Add" />
         </form>
         <hr />
-        <h3 class="title mb-3">Список дел</h3>
+        <h3 class="title mb-3">To-do list</h3>
         <ul id="items" class="list-group">
           <!-- <li class="list-group-item">
                         Приготовить завтрак
