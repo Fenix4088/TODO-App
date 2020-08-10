@@ -1,17 +1,17 @@
 # :ledger: TODO-App 
 
-## Технологии
+## Technology
 - html
 - bootstrap
 - JavaScript
 
-## Описание
-ToDo-App - это простое веб приложение, которое поможет вам не забыть о предстоящих делах. :sleeping:
+## Description
+ToDo-App is a simple web application that will help you remember what to do. :sleeping:
 
-ToDo-App предоставляет следуйщий функционал:
-- добавление/удаление элемента в список предстоящих дел
-- Поиск по списку с помощью фильтра в шапке проекта
+ToDo-App provides the following functionality:
+- adding / removing an item to the to-do list
+- search through the list by using the filter in the project header
 
-P.S: Все данные сохраняются в Local Storage
+P.S: All data is stored in Local Storage
 
-**Ссылка на демо:** :link: [Клик](https://fenix4088.github.io/TODO-App/)
+**Demo link:** :link: [Click](https://fenix4088.github.io/TODO-App/)
